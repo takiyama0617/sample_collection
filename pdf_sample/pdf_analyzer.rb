@@ -29,9 +29,9 @@ def parse_pdf(file)
     text = page.text.empty? ? 'empty' : page.text.slice(0, 10)
     puts "→ PDF page text : #{text}..."
 
-    File.open("./output/sample_#{page.number}.pdf", 'wb') do |f|
-      f.write(page.text)
-    end
+    # File.open("./output/sample_#{page.number}.pdf", 'wb') do |f|
+    #   f.write(page.text)
+    # end
   end
 end
 
