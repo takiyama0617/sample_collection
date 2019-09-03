@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'mail'
 
 def send_mail(params, mail)

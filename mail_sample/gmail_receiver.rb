@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'mail'
 
 def get_mail(params)
@@ -8,10 +10,12 @@ def get_mail(params)
   begin
     mails = Mail.find(keys: 'UNSEEN', order: :desc)
     raise 'try again' if mails.empty?
+
     mails
-  rescue => e
+  rescue StandardError => e
     sleep 3
     raise "メールを取得できなかった。 class = #{e.class}, message = #{e.message}" if (count += 1) == 10
+
     retry
   end
 end
