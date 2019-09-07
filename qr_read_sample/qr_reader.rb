@@ -1,9 +1,6 @@
 require 'zbar'
 require 'optparse'
 
-
-# ZBar::Image.from_jpeg(Filbree.read('../sample/QR_BC1001.pdf')).process
-
 def main
   file = ''
   opt = OptionParser.new
@@ -17,7 +14,12 @@ def main
 end
 
 def parse_barcode(file)
-  
+  datas = ZBar::Image.from_jpeg(File.binread(file)).process
+  datas.each do |data|
+    puts data.data
+    p data.location
+    puts data.symbology
+  end
 end
 
 
