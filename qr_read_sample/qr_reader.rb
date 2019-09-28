@@ -15,6 +15,11 @@ end
 
 def parse_barcode(file)
   datas = ZBar::Image.from_jpeg(File.binread(file)).process
+  if datas.empty?
+    puts 'no data...?'
+    return
+  end
+
   datas.each do |data|
     puts data.data
     p data.location
